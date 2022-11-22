@@ -1,0 +1,4 @@
+https://github.com/adafruit/Adafruit_Sensor
+https://github.com/drcpattison/BMX160
+https://github.com/PaulStoffregen/SerialFlash
+https://github.com/adafruit/Adafruit_HTS221
