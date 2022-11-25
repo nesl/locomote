@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "mbed.h"
 #include <Adafruit_HTS221.h>
+#include <Adafruit_Sensor.h>
 
 // DEFINES
 
