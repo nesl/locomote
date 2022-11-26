@@ -1,0 +1,7 @@
+https://github.com/adafruit/Adafruit_Sensor
+https://github.com/drcpattison/BMX160
+https://github.com/PaulStoffregen/SerialFlash
+https://github.com/adafruit/Adafruit_HTS221
+https://github.com/adafruit/Adafruit_GPS
+https://github.com/adafruit/Adafruit_INA219
+https://github.com/mozzwald/RTC_M41T62
