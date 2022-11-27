@@ -9,7 +9,7 @@ Long-term and fine-grained maritime localization and sensing is challenging due 
 ## Code Architecture
 - ```encasement```: contains the ```.stl``` CAD files for the EPU-40 encasement and resin base.
 - ```pcb```: contains the altium pcb design files for the main circuit board, and eagle pcb design files for the offline battery charger and pressure sensor board. PCB schematic and board design images are also provided.
-- ```software```: contains code for: (a) data logging from all the sensors into the flash, also contains code to toggle data recovery modes from a computer using a Python script (```data_logger_demo```); (b) communication stack for the transmitter and receiver (```piezo_OOK_demo```); (c) PWM demo for piezo (```piezo_PWM_demo```); (d) GPS data logging and power measurement (```GPS```); (e) repository link for developing neural inertial navigation algorithms, as well as Marina Del Rey deployment IMU, GPS data.
+- ```software```: contains code for: (a) data logging from all the sensors into the flash, also contains code to toggle data recovery modes from a computer using a Python script (```data_logger_demo```); (b) communication stack for the transmitter and receiver (```piezo_OOK_demo```); (c) PWM demo for piezo (```piezo_PWM_demo```); (d) GPS data logging and power measurement (```GPS```); (e) repository link for developing neural inertial navigation algorithms, as well as Marina Del Rey deployment IMU, GPS dataset; an importer is provided for the dataset (```neural_inertial_navigation```).
 
 ## Required items
 - Altium Designer (21.x.x or higher) (https://www.altium.com/altium-designer/).
