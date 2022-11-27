@@ -31,6 +31,7 @@ def import_marina_dataset(window_size=200,stride=20):
     #extract velocity from GPS
     vel[:,0] = np.diff(gps[:,0])
     vel[:,1] = np.diff(gps[:,1])
+    vel = np.insert(vel,0,np.array(([0,0])),axis=0)
     
     #windowing
     windows = SlidingWindow(size=window_size, stride=stride)
@@ -43,12 +44,21 @@ def import_marina_dataset(window_size=200,stride=20):
     for i in range(1,vel.shape[1]):
         X_windows = windows.fit_transform(vel[:,i])
         cur_GT_3D = np.dstack((cur_GT_3D,X_windows))
+
+    cur_GPS_3D = windows.fit_transform(gps[:,0])
+    for i in range(1,gps.shape[1]):
+        X_windows = windows.fit_transform(gps[:,i])
+        cur_GPS_3D = np.dstack((cur_GPS_3D,X_windows))
     
-    #modify 3d velocity matrix to have only nX1X2 shape
+    #modify 3d velocity and 3D GPS matrix to have only nX1X2 shape
     vel_3D = np.zeros([cur_GT_3D.shape[0],2])
     for i in range(cur_GT_3D.shape[0]): 
             vel_3D[i,0] = cur_GT_3D[i,-1,0]-cur_GT_3D[i,0,0]
             vel_3D[i,1] = cur_GT_3D[i,-1,1]-cur_GT_3D[i,0,1]
+    GPS_3D = np.zeros([cur_GPS_3D.shape[0],2])
+    for i in range(cur_GPS_3D.shape[0]): 
+            GPS_3D[i,0] = np.mean(cur_GPS_3D[i,:,0])
+            GPS_3D[i,1] = np.mean(cur_GPS_3D[i,:,1])   
             
             
     #extract physics channel and concatenate with windowed imu data
@@ -68,8 +78,8 @@ def import_marina_dataset(window_size=200,stride=20):
     P = np.repeat(phy_mat,window_size).reshape((phy_mat.shape[0],window_size,1))
     cur_train_3D = np.concatenate((cur_train_3D,P),axis=2)
     
-    #return raw imu, raw GPS, raw velocity, windowed imu/physics, and windowed labels (velocity)
-    return imu, gps, vel, cur_train_3D, vel_3D 
+    #return raw imu, raw GPS, raw velocity, windowed imu/physics, windowed labels (velocity), and windowed GPS data
+    return imu, gps, vel, cur_train_3D, vel_3D, GPS_3D
 
 
 def long_lat_to_x_y(long_lat_mat):
