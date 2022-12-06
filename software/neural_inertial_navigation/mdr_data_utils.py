@@ -2,9 +2,10 @@ import pandas as pd
 import numpy as np
 from gtda.time_series import SlidingWindow
 import matplotlib.pyplot as plt
-from math import atan2, pi, sqrt, atan2, sin, cos, radians
+from math import atan2, pi, sqrt, atan2, sin, cos, radians, ceil
 from scipy.signal import resample
 from scipy.fft import fft
+from scipy import interpolate
 from geographiclib.geodesic import Geodesic
 from tqdm import tqdm
 import os
@@ -27,6 +28,10 @@ def import_marina_dataset(window_size=200,stride=20):
     #resample GPS
     gps[:,0] = resample(x_y[:,0],x_y.shape[0]*100)
     gps[:,1] = resample(x_y[:,1],x_y.shape[0]*100)
+    
+    #align
+    gps = gps[50153:,]
+    vel = vel[50153:,]
     
     #extract velocity from GPS
     vel[:,0] = np.diff(gps[:,0])
@@ -53,12 +58,12 @@ def import_marina_dataset(window_size=200,stride=20):
     #modify 3d velocity and 3D GPS matrix to have only nX1X2 shape
     vel_3D = np.zeros([cur_GT_3D.shape[0],2])
     for i in range(cur_GT_3D.shape[0]): 
-            vel_3D[i,0] = cur_GT_3D[i,-1,0]-cur_GT_3D[i,0,0]
-            vel_3D[i,1] = cur_GT_3D[i,-1,1]-cur_GT_3D[i,0,1]
+        vel_3D[i,0] = np.mean(cur_GT_3D[i,:,0])
+        vel_3D[i,1] = np.mean(cur_GT_3D[i,:,1])
     GPS_3D = np.zeros([cur_GPS_3D.shape[0],2])
     for i in range(cur_GPS_3D.shape[0]): 
-            GPS_3D[i,0] = np.mean(cur_GPS_3D[i,:,0])
-            GPS_3D[i,1] = np.mean(cur_GPS_3D[i,:,1])   
+        GPS_3D[i,0] = np.mean(cur_GPS_3D[i,:,0])
+        GPS_3D[i,1] = np.mean(cur_GPS_3D[i,:,1])   
             
             
     #extract physics channel and concatenate with windowed imu data
