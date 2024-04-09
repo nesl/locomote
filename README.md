@@ -4,7 +4,7 @@
 ![software_setup](comm_soft.png)
 
 ## Paper
-https://www.researchgate.net/publication/379364381_LocoMote_AI-driven_Sensor_Tags_for_Fine-Grained_Undersea_Localization_and_Sensing
+https://ieeexplore.ieee.org/abstract/document/10494218/
 
 ## Summary
 Long-term and fine-grained maritime localization and sensing is challenging due to sporadic connectivity, constrained power budget, limited footprint, and hostile environment. In this paper, we present the design considerations and implementation of LocoMote, a rugged ultra-low-footprint undersea sensor tag with on-device AI-driven localization, online communication, and energy-harvesting capabilities. LocoMote uses on-chip (< 30 kB) neural networks to track underwater objects within 3 meters with ~6 minutes of GPS outage from 9DoF inertial sensor readings. The tag streams data at 2-5 kbps (< 10^-3 bit error rate) using piezo-acoustic ultrasonics, achieving underwater communication range of more than 50 meters while allowing up to 55 nodes to concurrently stream via randomized time-division multiple access. To recharge the battery during sleep, the tag uses an aluminum-air salt water energy harvesting system, generating upto 5 mW of power. LocoMote is ultra-lightweight (< 50 grams), tiny (32x32$x10 mm^3), consumes low power (~330 mW peak), and comes with a suite of high-resolution sensors. We highlight the hardware and software design decisions, implementation lessons, and the real-world performance of our tag versus existing oceanic sensing technologies. 
