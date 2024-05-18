@@ -28,7 +28,7 @@ Long-term and fine-grained maritime localization and sensing is challenging due 
 ## Citation
 Please cite this as:
 
-Swapnil Sayan Saha, Caden Davis, Sandeep Singh Sandha, Junha Park, Joshua Geronimo, Luis Antonio Garcia and Mani Srivastava, "LocoMote: AI-driven Sensor Tags for Fine-Grained Undersea Localization and Sensing", in IEEE Sensors Journal, 2024, IEEE.
+Swapnil Sayan Saha, Caden Davis, Sandeep Singh Sandha, Junha Park, Joshua Geronimo, Luis Antonio Garcia and Mani Srivastava, "LocoMote: AI-driven Sensor Tags for Fine-Grained Undersea Localization and Sensing", in IEEE Sensors Journal, vol. 24, no. 10, pp. 16999-17018, 15 May 2024, IEEE.
 
 
 ## Acknowledgements
